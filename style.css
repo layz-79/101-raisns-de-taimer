@@ -1,0 +1,760 @@
+/* =================================
+   VARIABLES
+================================= */
+
+:root {
+    --rose: #e85d75;
+    --rose-clair: #fff0f3;
+    --rose-fonce: #b93651;
+    --texte: #3d2930;
+    --blanc: #ffffff;
+    --ombre: rgba(80, 20, 35, 0.12);
+}
+
+
+/* =================================
+   RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: var(--texte);
+    background: #fff9fa;
+    overflow-x: hidden;
+}
+
+
+/* =================================
+   COEURS FLOTTANTS
+================================= */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -30px;
+    color: rgba(232, 93, 117, 0.35);
+    animation: monter linear forwards;
+}
+
+@keyframes monter {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+
+}
+
+
+/* =================================
+   ACCUEIL
+================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(255,210,220,.6), transparent 30%),
+        linear-gradient(135deg, #fff1f4, #ffe1e8);
+}
+
+
+.hero-content {
+    max-width: 850px;
+
+    animation: apparition 1.5s ease;
+}
+
+
+.petit-texte {
+    font-size: 15px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose-fonce);
+    margin-bottom: 25px;
+}
+
+
+.hero h1 {
+    font-family: "Dancing Script", cursive;
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: 1;
+    color: var(--rose-fonce);
+    margin-bottom: 30px;
+}
+
+
+.sous-titre {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 45px;
+}
+
+
+/* =================================
+   BOUTONS
+================================= */
+
+.btn {
+    border: none;
+    background: var(--rose);
+    color: white;
+
+    padding: 16px 32px;
+
+    border-radius: 50px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 30px rgba(232, 93, 117, .25);
+
+    transition: .3s ease;
+}
+
+
+.btn:hover {
+    transform: translateY(-4px);
+    background: var(--rose-fonce);
+    box-shadow: 0 15px 35px rgba(232, 93, 117, .35);
+}
+
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    font-size: 25px;
+    animation: bounce 1.5s infinite;
+}
+
+
+@keyframes bounce {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+}
+
+
+/* =================================
+   SECTIONS
+================================= */
+
+.section {
+    padding: 120px 20px;
+}
+
+
+.container {
+    width: min(1100px, 100%);
+    margin: auto;
+}
+
+
+.numero {
+    display: block;
+
+    color: var(--rose);
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
+}
+
+
+h2 {
+    font-family: "Dancing Script", cursive;
+
+    font-size: clamp(45px, 6vw, 70px);
+
+    color: var(--rose-fonce);
+
+    margin-bottom: 25px;
+}
+
+
+.description {
+    color: #806a70;
+    margin-bottom: 50px;
+}
+
+
+/* =================================
+   INTRO
+================================= */
+
+.introduction {
+    text-align: center;
+    background: white;
+}
+
+
+.texte-intro {
+    max-width: 700px;
+
+    margin: 0 auto 25px;
+
+    font-size: 17px;
+
+    line-height: 2;
+}
+
+
+.signature {
+    font-family: "Dancing Script", cursive;
+
+    font-size: 30px;
+
+    color: var(--rose);
+
+    margin-top: 35px;
+}
+
+
+/* =================================
+   GALERIE
+================================= */
+
+.galerie-section {
+    background: #fff5f7;
+}
+
+
+.galerie {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+
+.photo {
+    height: 400px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px var(--ombre);
+
+    background: #eee;
+}
+
+
+.photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .6s ease;
+}
+
+
+.photo:hover img {
+    transform: scale(1.08);
+}
+
+
+.photo-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding: 25px;
+
+    background: linear-gradient(
+        transparent,
+        rgba(50, 10, 20, .7)
+    );
+
+    color: white;
+
+    opacity: 0;
+
+    transition: .4s ease;
+}
+
+
+.photo:hover .photo-overlay {
+    opacity: 1;
+}
+
+
+/* =================================
+   LETTRE
+================================= */
+
+.lettre-section {
+    background:
+        radial-gradient(
+            circle at top right,
+            #ffd8e0,
+            transparent 40%
+        ),
+        #fff9fa;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+.lettre {
+    width: min(800px, 100%);
+
+    background: white;
+
+    padding: 70px;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 30px 80px rgba(100, 30, 50, .12);
+
+    position: relative;
+}
+
+
+.lettre::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border: 1px solid #f5d1d8;
+
+    pointer-events: none;
+}
+
+
+.lettre-coeur {
+    text-align: center;
+
+    font-size: 35px;
+
+    color: var(--rose);
+
+    margin-bottom: 20px;
+}
+
+
+.lettre-date {
+    text-align: center;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    color: #9a7b82;
+
+    margin-bottom: 20px;
+}
+
+
+.lettre h2 {
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+
+.lettre-contenu {
+    font-family: "Dancing Script", cursive;
+
+    font-size: 25px;
+
+    line-height: 1.8;
+}
+
+
+.lettre-contenu p {
+    margin-bottom: 25px;
+}
+
+
+.lettre-fin {
+    text-align: center;
+
+    color: var(--rose);
+
+    font-size: 35px;
+
+    margin-top: 40px;
+}
+
+
+/* =================================
+   101 RAISONS
+================================= */
+
+.raisons-section {
+    background: white;
+}
+
+
+.raisons-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+.raison {
+    padding: 25px;
+
+    background: #fff7f8;
+
+    border: 1px solid #f9dfe4;
+
+    border-radius: 15px;
+
+    transition: .3s ease;
+}
+
+
+.raison:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 15px 30px rgba(100, 30, 50, .08);
+
+    border-color: #f2aebb;
+}
+
+
+.raison-numero {
+    display: block;
+
+    font-size: 13px;
+
+    color: var(--rose);
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+
+.raison p {
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =================================
+   FIN
+================================= */
+
+.fin {
+    min-height: 90vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe6eb,
+            #fff5f7
+        );
+}
+
+
+.fin-content {
+    animation: apparition 1s ease;
+}
+
+
+.grand-coeur {
+    font-size: 100px;
+
+    color: var(--rose);
+
+    animation: battement 1.3s infinite;
+}
+
+
+@keyframes battement {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+
+.fin h2 {
+    margin-bottom: 20px;
+}
+
+
+.fin p {
+    font-family: "Dancing Script", cursive;
+
+    font-size: 35px;
+
+    margin-bottom: 5px;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+    text-align: center;
+
+    padding: 25px;
+
+    font-size: 12px;
+
+    color: #9a7b82;
+
+    background: white;
+}
+
+
+/* =================================
+   ANIMATIONS
+================================= */
+
+@keyframes apparition {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =================================
+   RESPONSIVE TELEPHONE
+================================= */
+
+/* =================================
+   AFFICHAGE TELEPHONE
+================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .hero {
+        min-height: 100svh;
+        padding: 25px 20px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .petit-texte {
+        font-size: 12px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        line-height: 1.05;
+        margin-bottom: 25px;
+    }
+
+    .sous-titre {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 35px;
+    }
+
+    .btn {
+        padding: 15px 25px;
+        font-size: 14px;
+    }
+
+
+    /* SECTIONS */
+
+    .section {
+        padding: 75px 18px;
+    }
+
+    h2 {
+        font-size: 45px;
+        line-height: 1.1;
+    }
+
+    .description {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+
+    /* INTRODUCTION */
+
+    .texte-intro {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+
+    /* PHOTOS */
+
+    .galerie {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .photo {
+        width: 100%;
+        height: 430px;
+        border-radius: 18px;
+    }
+
+
+    /* LETTRE */
+
+    .lettre {
+        width: 100%;
+        padding: 50px 25px;
+        border-radius: 8px;
+    }
+
+    .lettre::before {
+        inset: 10px;
+    }
+
+    .lettre-contenu {
+        font-size: 21px;
+        line-height: 1.7;
+    }
+
+    .lettre-contenu p {
+        margin-bottom: 20px;
+    }
+
+
+    /* 101 RAISONS */
+
+    .raisons-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .raison {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .raison p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+
+    /* FIN */
+
+    .fin {
+        min-height: 100svh;
+        padding: 30px 20px;
+    }
+
+    .grand-coeur {
+        font-size: 80px;
+    }
+
+    .fin h2 {
+        font-size: 45px;
+    }
+
+    .fin p {
+        font-size: 28px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        font-size: 11px;
+        padding: 20px;
+    }
+
+}
+
